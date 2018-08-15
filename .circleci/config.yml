@@ -18,7 +18,7 @@ jobs:
       - run: echo "Done"
 workflows:
   version: 2
-  sequential_sleep
+  sequential_sleep:
     jobs:
     - build1
     - build2
