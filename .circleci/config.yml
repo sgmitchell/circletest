@@ -1,10 +1,26 @@
 version: 2
 jobs:
-  build:
-    docker: # See https://docs.docker.com/get-started/#docker-concepts if you are new to Docker.
-      - image: circleci/ruby:2.4.1
+  build1:
+    docker: 
+      - image: circleci/ruby
     steps:
       - checkout
       - run: echo "A first hello"
       - run: sleep 300
       - run: echo "Done"
+  build2:
+    docker: 
+      - image: circleci/golang
+    steps:
+      - checkout
+      - run: echo "A first hello"
+      - run: sleep 300
+      - run: echo "Done"
+workflows:
+  version: 2
+  sequential_sleep
+    jobs:
+    - build1
+    - build2
+    - build1
+    - build2
